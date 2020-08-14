@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% block links %}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        
+        <div class='col-8 shadow-lg p-3 mb-5 rounded borderBody'>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+
+                <fieldset class="form-group">
+                    <legend class="border-bottom border-dark mb-4">Reset Password</legend>
+
+                    <div class="form-group">
+                        {{ form.email.label(class="form-control-label") }}
+
+                        
+                        {% if form.email.errors %}
+
+                            {{ form.email(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                        {% else %}
+
+                            {{ form.email(class="form-control form-control-lg") }}    
+
+                        {% endif %}
+                    </div>
+
+                </fieldset>
+
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-dark")}}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
