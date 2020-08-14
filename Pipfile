@@ -22,6 +22,8 @@ Werkzeug = "==0.14.1"
 flask-wtf = "*"
 flask-sqlalchemy = "*"
 email-validator = "*"
+flask-bcrypt = "*"
+flask-login = "*"
 
 [requires]
 python_version = "3.8"
