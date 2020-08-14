@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     updates = db.Column(db.Boolean, unique=False, default=False, nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default='default.png')
+    admin_user = db.Column(db.Boolean, unique=False, default=False, nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
 
     def __repr__(self):
@@ -30,3 +32,5 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+        
+

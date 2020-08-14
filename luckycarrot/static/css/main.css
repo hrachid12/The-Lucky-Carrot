@@ -1,8 +1,6 @@
 body {
 	background: #ffe7c9 !important;
-	/* background-image: url("/images/bone2.png");
-	background-repeat: round space;
-	background-size: 100px; */
+	font-family: 'Bitter', serif;
 }
 
 .logo {
@@ -42,3 +40,20 @@ nav {
 	margin-top: 30px;
 	background: #faedd0;
 }
+
+.content-section {
+	padding: 10px 20px;
+	border-radius: 3px;
+	margin-bottom: 20px;
+  }
+
+  .account-img {
+	height: 125px;
+	width: 125px;
+	margin-right: 20px;
+	margin-bottom: 16px;
+  }
+  
+  .account-heading {
+	font-size: 2.5rem;
+  }
