@@ -21,7 +21,8 @@ def about():
 
 @app.route("/blog", methods=['GET', 'POST'])
 def blog():
-    posts = Post.query.all()
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
     return render_template('blog.html', posts=posts)
 
 
@@ -153,6 +154,11 @@ def create_post():
         return redirect(url_for('home'))
     
     if form.validate_on_submit():
+
+        if not form.picture.data:
+            flash('Error in creating post. Please upload a picture.', 'danger')
+            return redirect(url_for('create_post'))
+
         image = save_post_picture(form.picture.data)
         post = Post(title=form.title.data, content=form.content.data, image_file=image, author=current_user)
         db.session.add(post)
