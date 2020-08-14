@@ -1,9 +1,9 @@
 import os
 import secrets
 from PIL import Image
-from flask import render_template, url_for, request, redirect, flash
+from flask import render_template, url_for, request, redirect, flash, abort
 from luckycarrot import app, db, bcrypt
-from luckycarrot.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from luckycarrot.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from luckycarrot.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -21,7 +21,16 @@ def about():
 
 @app.route("/blog", methods=['GET', 'POST'])
 def blog():
-    return render_template('blog.html')
+    posts = Post.query.all()
+    return render_template('blog.html', posts=posts)
+
+
+@app.route('/blog/<int:post_id>')
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+
+    return render_template('post.html', post=post)
+
 
 
 @app.route('/updates')
@@ -76,7 +85,7 @@ def logout():
     return redirect(url_for('home'))
 
 
-def save_picture(form_picture):
+def save_profile_picture(form_picture):
     random_hex = secrets.token_hex(8)
     f_name, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
@@ -102,7 +111,7 @@ def account():
 
     if form.validate_on_submit():
         if form.picture.data:
-            picture_file = save_picture(form.picture.data)
+            picture_file = save_profile_picture(form.picture.data)
             current_user.image_file = picture_file
 
         # Update user info in db
@@ -126,10 +135,58 @@ def account():
     return render_template('account.html', image_file=image_file, form=form)
 
 
-@app.route('/create_post')
+def save_post_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    f_name, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/post_pictures', picture_fn)
+    form_picture.save(picture_path)
+
+    return picture_fn
+
+@app.route('/create_post', methods=['GET', 'POST'])
 @login_required
 def create_post():
+    form = PostForm()
+
     if not current_user.admin_user:
         return redirect(url_for('home'))
+    
+    if form.validate_on_submit():
+        image = save_post_picture(form.picture.data)
+        post = Post(title=form.title.data, content=form.content.data, image_file=image, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Success! Post Created!', 'success')
+        return redirect(url_for('blog'))
 
-    return render_template('create_post.html')
+    return render_template('create_post.html', form=form, legend="Create New Post")
+
+
+@app.route('/blog/<int:post_id>/update', methods=["GET", "POST"])
+@login_required
+def update_post(post_id):
+    post = Post.query.get_or_404(post_id)
+
+    if post.author != current_user:
+        abort(403)
+
+    form = PostForm()
+
+    if form.validate_on_submit():
+        if form.picture.data:
+            picture_file = save_post_picture(form.picture.data)
+            post.image_file = picture_file
+
+        post.title = form.title.data 
+        post.content = form.content.data 
+        db.session.commit()
+        flash('Your post has been updated!', 'success')
+        return redirect(url_for('post', post_id=post.id))
+
+    elif request.method == 'GET':
+        form.title.data = post.title
+        form.content.data = post.content 
+
+
+    return render_template('update_post.html', form=form, legend="Update Post")

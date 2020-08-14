@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Lucky Carrot</title>
-    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/' + 'main.css')}}" type="text/css">
 
     {% block links %}{% endblock %}
 
@@ -28,12 +28,12 @@
 
         <div class="row" id="navBar">
 
-            <div id="titleLink" class="col float-left">
+            <div id="titleLink" class="col-3 float-left">
                 <a href="/" target="_self" class="logoLink">
                 <p class="logo"><span id="theLucky">The Lucky </span><span id="carrot">Carrot</span></p></a>
             </div>
             
-            <div class="col float-right">
+            <div class="col-9 float-right">
                 <nav class="navbar navbar-expand-lg navbar-dark float-right">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -58,15 +58,22 @@
                                 <a class="nav-link" href="{{ url_for('updates') }}">Updates</a>
                             </li>
 
-
+                            
                             {% if current_user.is_authenticated %}
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ url_for('account') }}">Account</a>
-                            </li>
 
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-                            </li>
+                                {% if current_user.admin_user %}
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="{{ url_for('create_post') }}">Create Post</a>
+                                    </li>
+                                {% endif %}
+                                
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ url_for('account') }}">Account</a>
+                                </li>
+
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                                </li>
                             {% else %}
                                 <li class="nav-item active">
                                     <a class="nav-link" href="{{ url_for('register') }}">Register</a>
