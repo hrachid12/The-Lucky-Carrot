@@ -15,64 +15,60 @@
 
 </head>
 <body>
+    {% if home %}
 
-    <div class="container-fluid bg-transparent fixed-top">
-        <div class="row" id="title">
-            <div class="col-8" id="titleLink">
-                <a href="/" target="_self">
+    <div class="container-fluid fixed-top bg-transparent">
+
+    {% else %}
+
+    <div class="container-fluid bg-dark">
+    
+    {% endif %}
+    
+        <div class="row" id="navBar">
+
+            <div id="titleLink" class="col float-left">
+                <a href="/" target="_self" class="logoLink">
                 <p class="logo"><span id="theLucky">The Lucky </span><span id="carrot">Carrot</span></p></a>
             </div>
             
-            
-            <div id="logoPic" class="col-4">
-                <img src="../static/images/logo.png" id="luckyPic" class="float-right">
-            </div>
-        </div>
+            <div class="col float-right">
+                <nav class="navbar navbar-expand-lg navbar-dark float-right">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-        <div id="sub-title" class="row">
-            <div class="col-12">
-                <p id="sub-logo" class="float-right">A blog by Lucky the pomeranian</p>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/about">About Me</a>
+                            </li>
+                            
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/blog">Blog</a>
+                            </li>
+
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/updates">Updates</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
             </div>
+
         </div>
-    </nav>
     </div>
 
     <div id="webBody">
         {% block content %}{% endblock %}
     </div>
 
-    <div class="container-fluid fixed-bottom bg-transparent">
-        <nav class="navbar navbar-expand-lg navbar-light float-right">
-            <div class="container">
-    
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-    
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-    
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-    
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/about">About Me</a>
-                        </li>
-                        
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/blog">Blog</a>
-                        </li>
-    
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/updates">Updates</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

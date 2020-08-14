@@ -1,0 +1,41 @@
+#home-body {
+	background-color: white;
+	border: 10px solid #333333;
+	border-top: 0;
+}
+
+#home-header {
+	font-family: 'Dancing script', cursive;
+	font-size: 65px;
+	position: relative;
+	color: rgb(255, 145, 0);
+}
+
+#home-content {
+	padding: 10px;
+	text-align: center;
+	min-height: 500px;
+	/* border: 10px solid #333333; */
+}
+
+.home-para {
+	font-family: 'Bitter', serif;
+	margin-top: 30px;
+	font-size: 25px;
+}
+
+.para-carrot {
+	font-family: 'Dancing script', cursive;
+	color: rgb(255, 145, 0);
+	font-size: 31px;
+}
+
+div a img {
+	width: 100px;
+	padding-top: 30px;
+}
+
+.insta {
+	width: 60px;
+	margin: auto;
+}

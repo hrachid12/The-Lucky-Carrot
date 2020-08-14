@@ -1,0 +1,48 @@
+#about-header {
+	width: 40%;
+	margin: 0 auto;
+	height: fit-content;
+	float: left;
+}
+
+#aboutTitle {
+	font-family: "Dancing script", cursive;
+	font-size: 80px;
+	color: rgb(255, 145, 0);
+}
+
+.bodyRows {
+	margin-top: 30px;
+}
+
+.bodyPara {
+	padding: 20px;
+	line-height: 2em;
+	padding-bottom: 67.3px;
+	font-family: 'Bitter', serif;
+	font-size: 23px;
+	text-align: center;
+}
+
+.bonePic {
+	width: 150px;
+}
+
+.about-imgs {
+	width: 450px;
+	border-radius: 50%;
+}
+
+#dlimg {
+	position: relative;
+	width: 50px;
+	padding-bottom: 0px;
+	border-radius: 50%;
+	left: 10px;
+	top: 10px;
+}
+
+#loveCarrots {
+	font-weight: bold;
+	text-decoration: underline;
+}
