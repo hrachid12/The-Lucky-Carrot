@@ -1,4 +1,4 @@
-from luckycarrot.webapp import app
+from luckycarrot import app
 
 if __name__ == "__main__":
     app.run(debug=True)
