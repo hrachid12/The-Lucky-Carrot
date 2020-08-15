@@ -1,29 +1,52 @@
 .article-title {
-    color: #444444;
-  }
+  color: #444444;
+  font-family: 'Dancing Script', cursive;
+  font-size: 45px;
+}
   
-  a.article-title:hover {
-    color: #428bca;
-    text-decoration: none;
-  }
-  
-  .article-content {
-    white-space: pre-line;
-  }
-  
-  .article-img {
-    height: 65px;
-    width: 65px;
-    margin-right: 16px;
-  }
-  
-  .article-metadata {
-    padding-bottom: 1px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
-  }
-  
-  .article-metadata a:hover {
-    color: #333;
-    text-decoration: none;
-  }
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.post-header {
+  font-family: 'Dancing script', cursive;
+  font-size: 75px;
+  position: relative;
+  color: black;
+}
+
+.post-content {
+  text-align: center;
+  font-family: 'Bitter', serif;
+  font-size: 25px;
+}
+
+.post-image {
+  width: 90%;
+}
+
+.sideBar:hover {
+  color: rgb(255, 145, 0);
+}

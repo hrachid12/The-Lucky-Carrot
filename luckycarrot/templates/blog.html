@@ -10,9 +10,9 @@
 <div class='container-xl'>
     {% for post in posts.items %}
         <div class="row">
-            <div class="col-1"></div>
+            
 
-            <div class="col-6 shadow-lg p-2 mb-3 rounded borderBody">
+            <div class="col-8 shadow-lg p-2 mb-3 rounded borderBody">
                 <article class='media content-section'>
                     <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pictures/' + post.author.image_file)}}">
                     <div class='media-body'>
@@ -21,10 +21,32 @@
                             <small class='text-muted'>{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
                         </div>
                         <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
-                        <p class="article-content">{{ post.content }}</p>
+                        
+                        {% if post.content|length > 199 %}
+                            <p class="article-content">{{ post.content[:200] }} ...</p>
+                        {% else %}
+                            <p class="article-content">{{ post.content }}</p>
+                        {% endif %}
+                        
                     </div>
                 </article>
             </div>
+
+            {% if loop.index == 1 %}
+            
+            <div class="col-3 shadow-lg p-2 mb-3 ml-4 rounded borderBody">
+                <div class="content-section">
+                  <h3 class="article-title">Sidebar</h3>
+                  <p class='text-muted'></p>
+                    <ul class="list-group">
+                      <a href="https://www.instagram.com/luckyluluthepom/" class="list-group-item list-group-item-light sideBar">Follow me on Instagram</a>
+                      <a href="#" class="list-group-item list-group-item-light sideBar">Follow me on Twitter</a>
+                      <a href="#" class="list-group-item list-group-item-light sideBar">Most Popular Post</a>
+                      <a href="{{ url_for('users.account') }}" class="list-group-item list-group-item-light sideBar">Sign up to receive emails</a>
+                    </ul>
+                </div>
+              </div>
+            {% endif %}
         </div>
     {% endfor %}
 
