@@ -4,6 +4,7 @@ from PIL import Image
 from flask import url_for, current_app
 from flask_mail import Message
 from luckycarrot import mail
+from flask_login import current_user
 
 def save_profile_picture(form_picture):
     random_hex = secrets.token_hex(8)

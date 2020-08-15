@@ -59,7 +59,7 @@ def update_post(post_id):
 
     if form.validate_on_submit():
         if form.picture.data:
-            picture_file = save_post_picture(form.picture.data, post)
+            picture_file = save_post_picture(form.picture.data, post, True)
             post.image_file = picture_file
 
         post.title = form.title.data 
