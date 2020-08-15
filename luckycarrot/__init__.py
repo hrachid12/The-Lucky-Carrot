@@ -28,9 +28,11 @@ def create_app(config_class=Config):
     from luckycarrot.users.routes import users
     from luckycarrot.posts.routes import posts
     from luckycarrot.main.routes import main
+    from luckycarrot.errors.handlers import errors
 
     app.register_blueprint(users)
     app.register_blueprint(posts)
     app.register_blueprint(main)
+    app.register_blueprint(errors)
 
     return app

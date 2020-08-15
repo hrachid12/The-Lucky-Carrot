@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block links %}
+
+<link rel="stylesheet" href="../static/css/blog.css">
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            
+            <div class='col-8 mt-5'>
+                <h1>Oops! You don't have permission to do that (Error 403)</h1>
+                <br>
+                <p>Please check your account and try again.</p>
+            </div>
+
+            <div class="col-3 shadow-lg p-2 mb-3 ml-4 rounded borderBody">
+                <div class="content-section">
+                  <h3 class="article-title">Sidebar</h3>
+                  <p class='text-muted'></p>
+                    <ul class="list-group">
+                      <a href="https://www.instagram.com/luckyluluthepom/" class="list-group-item list-group-item-light sideBar">Follow me on Instagram</a>
+                      <a href="#" class="list-group-item list-group-item-light sideBar">Follow me on Twitter</a>
+                      <a href="#" class="list-group-item list-group-item-light sideBar">Most Popular Post</a>
+                      <a href="{{ url_for('users.account') }}" class="list-group-item list-group-item-light sideBar">Sign up to receive emails</a>
+                    </ul>
+                </div>
+              </div>
+        </div>
+    </div>
+
+{% endblock %}
