@@ -68,14 +68,14 @@
                     <div class="form-group">
                         {{ form.submit(class="btn btn-outline-dark")}}
                         <small class="text-muted ml-2">
-                            <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
+                            <a href="{{ url_for('users.reset_request') }}">Forgot Password?</a>
                         </small>
                     </div>
                 </form>
 
                 <div class="border-top border-dark pt-3">
                     <small class="text-muted">
-                        Don't have an account yet? <a class="m1-2" href="{{ url_for('register') }}">Register Here.</a>
+                        Don't have an account yet? <a class="m1-2" href="{{ url_for('users.register') }}">Register Here.</a>
                     </small>
                 </div>
             </div>

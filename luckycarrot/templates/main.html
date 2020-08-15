@@ -43,19 +43,19 @@
                         <ul class="navbar-nav mr-auto">
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                                <a class="nav-link" href="{{ url_for('main.home') }}">Home</a>
                             </li>
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ url_for('about') }}">About Me</a>
+                                <a class="nav-link" href="{{ url_for('main.about') }}">About Me</a>
                             </li>
                             
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ url_for('blog') }}">Blog</a>
+                                <a class="nav-link" href="{{ url_for('posts.blog') }}">Blog</a>
                             </li>
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ url_for('updates') }}">Updates</a>
+                                <a class="nav-link" href="{{ url_for('main.updates') }}">Updates</a>
                             </li>
 
                             
@@ -63,24 +63,24 @@
 
                                 {% if current_user.admin_user %}
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="{{ url_for('create_post') }}">Create Post</a>
+                                        <a class="nav-link" href="{{ url_for('posts.create_post') }}">Create Post</a>
                                     </li>
                                 {% endif %}
                                 
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="{{ url_for('account') }}">Account</a>
+                                    <a class="nav-link" href="{{ url_for('users.account') }}">Account</a>
                                 </li>
 
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                                    <a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a>
                                 </li>
                             {% else %}
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                                    <a class="nav-link" href="{{ url_for('users.register') }}">Register</a>
                                 </li>
 
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                                    <a class="nav-link" href="{{ url_for('users.login') }}">Login</a>
                                 </li>
                             {% endif %}
                             
