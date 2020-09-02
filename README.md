@@ -2,7 +2,9 @@
 
 https://theluckycarrot.com/
 
-A redesign of the CS290 Website Project. This iteration of the website uses Flask instead of Node.JS. Create, update, and delete blog post functionality added for the admin user. All visitors are able to read blog posts. Visitors may also sign up and create an account, where they are able to update their profile picture, username, or email. 
+A redesign of the CS290 Website Project. This iteration of the website uses Flask instead of Node.JS and fixes known compatability issues with FireFox. 
+
+Create, update, and delete blog post functionality added for the admin user. All visitors are able to read blog posts. Visitors may also sign up and create an account, where they are able to update their profile picture, username, or email. 
 
 The site is deployed on a linux server provided by Linode. 
 
